@@ -3,6 +3,7 @@ using Storefront.Data.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Storefront.Data.Filters;
 
 namespace Storefront.Services
 {
@@ -41,6 +42,28 @@ namespace Storefront.Services
             });
 
             return parents;
+        }
+
+        /// <summary>
+        /// Return a list of Products by Category
+        /// </summary>
+        /// <param name="categoryID">ID of the category</param>
+        /// <returns>IList of Products</returns>
+        public IList<Product> GetProductsByCategory(int categoryID)
+        {
+            return _repository.GetProducts()
+                .WithCategory(categoryID).ToList();
+        }
+
+        /// <summary>
+        /// Return a single Product by ID
+        /// </summary>
+        /// <param name="productID">The product ID</param>
+        /// <returns></returns>
+        public Product GetProductByID(int productID)
+        {
+            return _repository.GetProducts()
+                .WithID(productID).Single();
         }
     }
 }

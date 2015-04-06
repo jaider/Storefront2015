@@ -10,30 +10,19 @@ namespace Storefront.Data
         public string Description { get; set; }
         public string ThumbnailFileName { get; set; }
         public string LargePhotoFileName { get; set; }
-        public decimal ListPrice { get; set; }
+        public decimal Price { get; set; }
         public decimal DiscountPercent { get; set; }
         public int CategoryID { get; set; }
 
-        public decimal DiscountAmount
-        {
-            get
-            {
-                decimal result = 0;
-                if (this.ListPrice > 0 && this.DiscountPercent > 0) {
-                    decimal discountRate = this.DiscountPercent * .01m;
-                    result = this.ListPrice * discountRate;
-                }
+        public Product() { }
 
-                return result;
-            }
-        }
-
-        public decimal DiscountPrice
+        public Product(string name, string description, int categoryID, decimal price, decimal discountPercent)
         {
-            get
-            {
-                return ListPrice - DiscountAmount;
-            }
+            this.Name = name;
+            this.Description = description;
+            this.CategoryID = categoryID;
+            this.Price = price;
+            this.DiscountPercent = discountPercent;
         }
     }
 }

@@ -1,10 +1,12 @@
 ﻿using System;
-//using System.Linq;
+using System.Linq;
 
 namespace Storefront.Data.DataAccess
 {
     public interface ICatalogRepository
     {
-        System.Linq.IQueryable<Category> GetCategories();
+        IQueryable<Category> GetCategories();
+
+        IQueryable<Product> GetProducts();
     }
 }
