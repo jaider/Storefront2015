@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Storefront.Data
 {
@@ -13,6 +14,8 @@ namespace Storefront.Data
         public decimal Price { get; set; }
         public decimal DiscountPercent { get; set; }
         public int CategoryID { get; set; }
+        public IList<ProductReview> Reviews { get; set; }
+        public IList<ProductDescription> LocalizedDescriptions { get; set; }
 
         public Product() { }
 
